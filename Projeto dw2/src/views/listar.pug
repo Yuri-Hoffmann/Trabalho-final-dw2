@@ -1,0 +1,47 @@
+include constante
+
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='stylesheet', href='/bscss/bootstrap.min.css')
+    link(rel='stylesheet', type='text/css', href='/publico/css/listar.css')
+    title Listar Cadastros
+  body
+    main
+      if (listaCompleta && listaCompleta.length > 0)
+        h1.titulo1 LISTA DE CADASTROS
+        table.table.table-bordered.border-dark.caption.top
+          thead
+            tr.table-dark
+              th(scope='col') ID
+              th(scope='col') Nome
+              th(scope='col') CPF
+              th(scope='col') Idade
+              th(scope='col') Email
+              th(scope='col') Nivel
+              th(scope='col') Sexo 
+              th(scope='col') Alterar
+              th(scope='col') Excluir
+          tbody.table-light
+            each row in listaCompleta 
+              tr
+                th(scope='row')=row.id
+                td=row.nome
+                td=row.cpf
+                td=row.idade
+                td=row.email
+                td=row.nivel
+                td=row.sexo
+                td
+                  a(href=`/solicita-alterar/${row.id}`)
+                    img.icones(src='/publico/imagens/icons8-pen-64.png')
+                td
+                  a(href=`/excluir/${row.id}`,onclick=`confirmarExclusao(${row.id})`)
+                    img.icones(src='/publico/imagens/icons8-trash-64.png')
+      else 
+        h1.titulo1="Nenhum valor encontrado"
+    script(src='/bsjs/bootstrap.min.js')
+    script(src='/popperjs/popper.min.js')
+    script(src='/jquery/jquery.min.js')

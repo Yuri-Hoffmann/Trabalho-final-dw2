@@ -1,0 +1,123 @@
+extends layout 
+
+block includes
+  include constante
+
+block linkscss
+  link(href='/publico/css/form-album.css', rel='stylesheet')
+
+block scriptsjs
+  script(src='/mask/jquery.mask.js')
+  script(src='/publico/js/form-album.js')
+
+block titulo_pagina
+  title=`Cadastro`
+
+block principal
+
+  if (mensagem)
+    #modalMsgRetorno.modal.fade(tabindex='-1', aria-labelledby='exampleModalLabel', aria-hidden='true')
+      .modal-dialog
+        .modal-content
+          .modal-header
+            h5#exampleModalLabel.modal-title Mensagem
+            button.btn-close(type='button', data-bs-dismiss='modal', aria-label='Close')
+          .modal-body=`${mensagem}`
+          .modal-footer
+            button.btn.btn-secondary(type='button', data-bs-dismiss='modal') Fechar
+  if (jogador)
+    //Alteração
+    main
+      .container.d-flex.flex-column.col-md-6
+        .container
+          h2 &Aacute;Alteração de Jogador
+        form#dataForm.row.g-3(name='dataForm', action=`/alterar/${jogador.id}`, method='POST', onsubmit='validarFormulario()')
+          .container.div-tab
+            .col-md-12
+              label.form-label(for='nome') Nome
+              input#nome.form-control(type='text', name='nome', size='250', value=`${jogador.nome}`)
+            .row
+              .col-md-6
+                label.form-label(for='cpf') CPF
+                input#cpf.form-control(type='text', name='cpf',value=`${jogador.cpf}`)
+              .col-md-6
+                label.form-label(for='idade') Idade
+                input#idade.form-control(type='text', name='idade',value=`${jogador.idade}`)
+            .col-md-12
+              label.form-label(for='email') E-mail
+              input#email.form-control(type='email', name='email',value=`${jogador.email}`)
+            .row
+              .col-md-12
+                label.form-label(for='nivel') Nível
+                select#nivel.form-select(name='nivel')
+                  each valor, chave in nivel 
+                    if jogador.nivel == chave
+                      option(value=`${chave}`,selected)=`${valor}`
+                    else 
+                      option(value=`${chave}`)=`${valor}`
+            .col-md-12
+              label.form-label(for='sexo') Sexo
+              select#sexo.form-select(name='sexo')
+                each valor, chave in sexo
+                  if jogador.sexo == chave
+                    option(value=`${chave}`,selected)=`${valor}`
+                  else 
+                    option(value=`${chave}`)=`${valor}`
+            .container.d-flex.justify-content-around.div-botao
+              button.btn.btn-primary(type='submit') Enviar
+      .position-fixed.bottom-0.end-0.p-3(style='z-index: 11')
+        #liveToast.toast(role='alert', aria-live='assertive', aria-atomic='true')
+          .toast-header
+            img.rounded.me-2(src='/publico/imagens/alerta.png', alt='Alerta!', style='width: 20px;')
+            strong.me-auto Hummm.. Aconteceu algo!
+            small
+            button.btn-close(type='button', data-bs-dismiss='toast', aria-label='Close')
+          #msgToast.toast-body.div-toast
+            | Hello, world! This is a toast message.
+  else
+    //Inclusão
+    main
+      .container.d-flex.flex-column.col-md-6
+        .container
+          h2 Cadastro
+        form#dataForm.row.g-3(name='dataForm', action='/cadastro-album', method='POST', onsubmit='validarFormulario()')
+          .container.div-tab
+            .col-md-12
+              label.form-label(for='nome') Nome
+              input#nome.form-control(type='text', name='nome', size='250')
+            .row
+              .col-md-6
+                label.form-label(for='cpf') CPF
+                input#cpf.form-control(type='text', name='cpf')
+              .col-md-6
+                label.form-label(for='idade') Idade
+                input#idade.form-control(type='text', name='idade')
+            .col-md-12
+              label.form-label(for='email') E-mail
+              input#email.form-control(type='email', name='email')
+            .row
+              .col-md-12
+                label.form-label(for='nivel') Nivel
+                select#nivel.form-select(name='nivel')
+                  option(selected='') Selecionar
+                  option(value='1') Iniciante
+                  option(value='2') Amador
+                  option(value='3') Senior
+                  option(value='4') Master
+            .col-md-12
+              label.form-label(for='sexo') Sexo
+              select#sexo.form-select(name='sexo')
+                option(selected='') Selecionar
+                option(value='1') Masculino
+                option(value='2') Feminino
+            .container.d-flex.justify-content-around.div-botao
+              button.btn.btn-primary(type='submit') Enviar
+      .position-fixed.bottom-0.end-0.p-3(style='z-index: 11')
+        #liveToast.toast(role='alert', aria-live='assertive', aria-atomic='true')
+          .toast-header
+            img.rounded.me-2(src='/publico/imagens/alerta.png', alt='Alerta!', style='width: 20px;')
+            strong.me-auto Hummm.. Aconteceu algo!
+            small
+            button.btn-close(type='button', data-bs-dismiss='toast', aria-label='Close')
+          #msgToast.toast-body.div-toast
+            | Hello, world! This is a toast message.

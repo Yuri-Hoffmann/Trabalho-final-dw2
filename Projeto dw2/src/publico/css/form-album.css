@@ -1,0 +1,35 @@
+body {
+  padding: 20px;
+  background: url("../imagens/download\ \(1\).png");
+  background-size: 100%;
+}
+
+h2 {
+  padding: 20px;
+  text-align: center;
+  color: white;
+  text-shadow: black 5px 2px;
+}
+
+#dataForm {
+  border: 7px solid orange;
+  padding: 20px;
+  align-items: center;
+  text-align: center;
+  background-color: black;
+}
+
+label {
+  color: white;
+  margin: 0px;
+}
+
+.div-botao {
+  padding-top: 10px;
+}
+
+.div-toast {
+  font-size: 15px;
+  font-weight: bold;
+  color: orangered;
+}

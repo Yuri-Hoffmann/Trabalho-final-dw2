@@ -1,0 +1,45 @@
+body {
+    padding: 20px;
+    background-color: aqua;
+}
+
+h1 {
+    text-align: center;
+    color: white;
+    text-shadow: black 4px 2px 2px;
+}
+
+.div-tab {
+    background-color: #F28157;
+    padding: 10px;
+}
+
+.div-botao {
+    padding-top: 10px;
+}
+
+.div-toast {
+    font-size: 15px;
+    font-weight: bold;
+    color: orangered;
+}
+
+.icones {
+    width: 20px;
+}
+
+
+/*
+Create table Jogador(
+	id serial not null,
+	nome varchar(50) not null,
+	idade integer not null,
+	cpf varchar(14) not null,
+	sexo integer not null,
+	nivel integer not null,
+	email varchar(200) not null	
+);
+
+drop table Jogador
+select*from Jogador
+*/

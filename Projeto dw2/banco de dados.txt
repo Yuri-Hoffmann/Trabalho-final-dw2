@@ -1,0 +1,12 @@
+Create table Registro(
+	id serial not null,
+	nome varchar(50) not null,
+	idade integer not null,
+	cpf varchar(14) not null,
+	sexo integer not null,
+	nivel integer not null,
+	email varchar(200) not null	
+);
+
+drop table Registro
+select*from Registro

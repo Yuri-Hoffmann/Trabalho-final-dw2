@@ -1,0 +1,39 @@
+block includes
+
+doctype html
+html(lang='en')
+  head
+    // Required meta tags
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='stylesheet', href='/bscss/bootstrap.min.css')
+    link(rel='stylesheet', href='/publico/css/layout.css')
+    
+    block linkscss
+
+    script(src='/bsjs/bootstrap.min.js')
+    script(src='/popperjs/popper.min.js')
+    script(src='/jquery/jquery.min.js')
+
+    block scriptsjs
+
+    block titulo_pagina
+
+  body 
+    header
+      nav.navbar.navbar-expand-lg.navbar-light.bg-light
+        .container-fluid
+          a.navbar-brand(href='/') Home
+          button.navbar-toggler(type='button', data-bs-toggle='collapse', data-bs-target='#navbarNav', aria-controls='navbarNav', aria-expanded='false', aria-label='Toggle navigation')
+            span.navbar-toggler-icon
+          #navbarNav.collapse.navbar-collapse
+            ul.navbar-nav
+              li.nav-item
+                a.nav-link.active(aria-current='page', href='/form-album') Cadastrar
+              li.nav-item
+                a.nav-link(href='/listar') Mostrar cadastros
+              
+    block principal 
+
+    footer.rodape
+            p &copy; Yuri Gobbi
